@@ -35,14 +35,19 @@ def get_story_by_profession(username):
         return "User not found or profession not specified."
     
 def write_to_file(file_path, content):
-    with open(file_path, 'w') as file:
-        file.txt.write(content)
+    try:
+        with open(file_path, 'w') as file:
+            file.txt.write(content)
+    except Exception as e:
+        print("Error writing to file: ", str(e))
 
 def read_from_file(file_path):
-    with open(file_path, 'r') as file:
-        data = file.read()
-        print(data)
-
+    try:
+        with open(file_path, 'r') as file:
+            data = file.read()
+            print(data)
+    except Exception as e:
+        print("Error reading from file: ", str(e))
 
 if __name__ == "__main__":
     create_database_and_table()
