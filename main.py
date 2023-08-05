@@ -34,12 +34,12 @@ def get_story_by_profession(username):
     else:
         return "User not found or profession not specified."
     
-def write_to_file(shared_stories.txt, shared_stories_content):
-    with open(shared_stories, 'w') as file:
-        file.write(shared_stories_content)
+def write_to_file(file_path, content):
+    with open(file_path, 'w') as file:
+        file.txt.write(content)
 
-def read_from_file(shared_stories.txt):
-    with open(shared_stories, 'r') as file:
+def read_from_file(file_path):
+    with open(file_path, 'r') as file:
         data = file.read()
         print(data)
 
@@ -92,10 +92,12 @@ if __name__ == "__main__":
                     print("You haven't provided a profession.")
                 else:
                     shared_stories_content = input("Enter your story: ")
+                    write_to_file("shared_stories.txt", shared_stories_content)
                     view_story = input("View shared stories? y/n")
                     view_story.lower()
+
                     if view_story == 'y':
-                        read_from_file()
+                        read_from_file("shared_stories.txt")
                     elif view_story == 'n':
                         break
                     else:
