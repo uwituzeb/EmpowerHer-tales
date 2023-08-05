@@ -34,20 +34,48 @@ def get_story_by_profession(username):
     else:
         return "User not found or profession not specified."
     
-def write_to_file(file_path, content):
-    try:
-        with open(file_path, 'w') as file:
-            file.txt.write(content)
-    except Exception as e:
-        print("Error writing to file: ", str(e))
+def write_to_database(profession, content):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="your_username",
+        password="your_password",
+        database="your_database"
+    )
+        
+    sql = "INSERT INTO shared_stories(profession, story) VALUES (%s, %s)"
+    data = (profession, content)
+    
+    cursor = conn.cursor()
+    cursor.execute(sql, data)
+    conn.commit()
+        
+    print("Story shared successfully!")   
+    cursor.close()
+    conn.close()
+  
 
-def read_from_file(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            data = file.read()
-            print(data)
-    except Exception as e:
-        print("Error reading from file: ", str(e))
+       
+
+
+
+
+
+def read_from_database(profession):
+    conn = mysql.connector.connect(
+            host="localhost",
+            user="your_username",
+            password="your_password",
+            database="your_database"
+        )
+
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT story FROM shared_stories WHERE profession = %s",
+    (profession,)
+    )
+    story = cursor.fetchone()
+        
+    return story[0] if story else "Sorry, no story available for this profession."
 
 if __name__ == "__main__":
     create_database_and_table()
@@ -91,22 +119,20 @@ if __name__ == "__main__":
         
         
         elif choice == 4:
-            if user in locals() and user:
-                profession = user[3]
-                if not profession:
-                    print("You haven't provided a profession.")
-                else:
-                    shared_stories_content = input("Enter your story: ")
-                    write_to_file("shared_stories.txt", shared_stories_content)
-                    view_story = input("View shared stories? y/n")
-                    view_story.lower()
+            profession = input("Enter a profession: ")
+            content = input("Enter your story: ")
+            write_to_database(profession, content)
+            view_story = input("View shared stories? y/n")
+            view_story.lower()
 
-                    if view_story == 'y':
-                        read_from_file("shared_stories.txt")
-                    elif view_story == 'n':
-                        break
-                    else:
-                        print("Invalid choice. Answer y or n")
+            if view_story == 'y':
+                read_profession = input("Enter profession to read story: ")
+                result = read_from_database(read_profession)
+                print(result)
+            elif view_story == 'n':
+                break
+            else:
+                print("Invalid choice. Answer y or n")
                         
                 
         
