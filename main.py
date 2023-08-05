@@ -33,6 +33,15 @@ def get_story_by_profession(username):
         return stories.get(profession, "Sorry, no story available for this profession.")
     else:
         return "User not found or profession not specified."
+    
+def write_to_file(shared_stories.txt, shared_stories_content):
+    with open(shared_stories, 'w') as file:
+        file.write(shared_stories_content)
+
+def read_from_file(shared_stories.txt):
+    with open(shared_stories, 'r') as file:
+        data = file.read()
+        print(data)
 
 
 if __name__ == "__main__":
@@ -40,7 +49,7 @@ if __name__ == "__main__":
     populate_stories()
 
     while True:
-        print("1. Register\n2. Login\n3. Read a story\n4. Exit")
+        print("1. Register\n2. Login\n3. Read a story\n4. Share your story\n5. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -61,7 +70,7 @@ if __name__ == "__main__":
 
         
         elif choice == 3:
-            if "user" in locals() and user:
+            if user in locals() and user:
                 profession = user[3]
                 if not profession:
                     print("You haven't provided a profession.")
@@ -74,10 +83,29 @@ if __name__ == "__main__":
                         print("Sorry, no stories available for this profession.")
             else:
                 print("Please login first.")
-                
+        
         
         elif choice == 4:
-            break
+            if user in locals() and user:
+                profession = user[3]
+                if not profession:
+                    print("You haven't provided a profession.")
+                else:
+                    shared_stories_content = input("Enter your story: ")
+                    view_story = input("View shared stories? y/n")
+                    view_story.lower()
+                    if view_story == 'y':
+                        read_from_file()
+                    elif view_story == 'n':
+                        break
+                    else:
+                        print("Invalid choice. Answer y or n")
+                        
+                
+        
+        elif choice == 5:
+            print("Thank you for using our application. Goodbye.")
+            break;
 
         else:
             print("Invalid choice. Try again.")
