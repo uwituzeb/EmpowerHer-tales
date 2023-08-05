@@ -20,7 +20,7 @@ EmpowerHer Tales is an inspiring initiative that aims to empower African women b
 ### Prerequisites
 
 - Python 3.x
-- SQL database (SQLite, PostgreSQL, etc.)
+- SQL database (MySQL, SQLite, PostgreSQL, etc.)
 
 ### Installation
 
@@ -36,18 +36,18 @@ EmpowerHer Tales is an inspiring initiative that aims to empower African women b
 
 ## Database Schema
 
-![Database Schema](link_to_database_schema_image)
+![Database Schema](images%2FDatabase.jpg)
 
 ## Team Members
 
 - Sine Shaday: Code Editor
 - Bernice Uwituze: Documentation
 - Lindah Nyambura: Story Compilation
+- Eunice Adewusi: Code Editor and Technical Guide
 - Abuk Duot: Documentation
 - Innocente Gihozo: Code Editor Lead
 - Umutoni Gentille: Story Compilation
 - Josiane Ishimwe: Code Editor
-- Eunice Adewusi: Code Editor and Technical Guide
 
 ## Project Timeline
 
