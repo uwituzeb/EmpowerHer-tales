@@ -1,6 +1,6 @@
 # EmpowerHer Tales: Stories Change
 
-![EmpowerHer Tales Logo](images%2FEmpowerHer%20Tales.png)
+![EmpowerHer Tales Logo](images%2FEmpowerHer%20Tales_1.png)
 
 ## Project Overview
 
