@@ -37,6 +37,17 @@ def create_database_and_table():
         )
         """
     )
+    
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS comments (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            comment VARCHAR(255) NOT NULL,
+            story_id INT NOT NULL
+        )
+        """
+    )
     conn.commit()
     cursor.close()
     conn.close()
@@ -101,6 +112,8 @@ def populate_stories():
     stories = [
         {"title": "The Skilled Doctor", "story": "Once upon a time, there was a skilled doctor...", "profession": "doctor"},
         {"title": "The Talented Engineer", "story": "In the land of engineers, there lived a talented...", "profession": "engineer"},
+        {"title": "Art", "story": "In the of beautifull art, there lived a talented...", "profession": "art"},
+
     ]
 
     for story_data in stories:
@@ -109,6 +122,21 @@ def populate_stories():
             (story_data["title"], story_data["story"], story_data["profession"])
         )
 
+    conn.commit()
+    conn.close()
+    
+def leave_comment(username, story_id, comment):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="password",
+        database="test"
+    )
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO comments (story_id, username, comment) VALUES (%s, %s, %s)",
+        (story_id, username, comment)
+    )
     conn.commit()
     conn.close()
     
