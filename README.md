@@ -1,3 +1,4 @@
+
 # EmpowerHer Tales: Stories Change
 
 ![EmpowerHer Tales Logo](images%2FEmpowerHer%20Tales_1.png)
@@ -66,4 +67,7 @@ This project is licensed under the [African Leadership University, ALU Rwanda].
 ## Contact Information
 
 For inquiries and support, feel free to contact our team at [e.adewusi@alustudent.com].
+=======
+
+# EMPOWER HER TALES
 
