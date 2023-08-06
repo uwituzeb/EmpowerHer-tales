@@ -47,28 +47,69 @@ def get_story_by_profession(profession):
     return stories
 
 
-def leave_comment(username, story_id, comment):
+
+    if profession:
+        stories = {
+            "doctor": "Once upon a time, there was a skilled doctor...",
+            "engineer": "In the land of engineers, there lived a talented...",
+            "art": "The art is another story"
+        }
+        return stories.get(profession, "Sorry, no story available for this profession.")
+    else:
+        return "User not found or profession not specified."
+    
+def write_to_database(profession, content):
     conn = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="password",
-        database="test"
+        user="your_username",
+        password="your_password",
+        database="your_database"
     )
+        
+    sql = "INSERT INTO shared_stories(profession, story) VALUES (%s, %s)"
+    data = (profession, content)
+    
+    cursor = conn.cursor()
+    cursor.execute(sql, data)
+    conn.commit()
+        
+    print("Story shared successfully!")   
+    cursor.close()
+    conn.close()
+  
+
+       
+
+
+
+
+
+def read_from_database(profession):
+    conn = mysql.connector.connect(
+            host="localhost",
+            user="your_username",
+            password="your_password",
+            database="your_database"
+        )
+
+
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO comments (story_id, username, comment) VALUES (%s, %s, %s)",
-        (story_id, username, comment)
+        "SELECT story FROM shared_stories WHERE profession = %s",
+    (profession,)
     )
-    conn.commit()
-    conn.close()
-
+    story = cursor.fetchone()
+        
+    return story[0] if story else "Sorry, no story available for this profession."
 
 if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
 
     while True:
-        print("1. Register\n2. Login\n3. Read a story\n4. leave comment\n5. Exit")
+
+        print("1. Register\n2. Login\n3. Read a story\n4. Share your story\n5. Exit")
+
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -88,25 +129,44 @@ if __name__ == "__main__":
                 print("Invalid username or password.")
 
         elif choice == 3:
-            if "user" in locals() and user:
-                print("Select a theme:")
-                display_themes()
-                theme_id = int(input("Enter theme ID: "))
-                read_stories_by_theme(theme_id)
-                    # story_choice = int(input("Enter the story number to read: "))
+
+            if user in locals() and user:
+                profession = user[3]
+                if not profession:
+                    print("You haven't provided a profession.")
+                else:
+                    stories = get_story_by_profession(profession)
+                    if stories:
+                        for story in stories:
+                            print(f"Title: {profession.capitalize()} Story\n{story[0]}\n")
+                    else:
+                        print("Sorry, no stories available for this profession.")
             else:
                 print("Please login first.")
+        
         
         elif choice == 4:
-            if "user" in locals() and user:
-                story_id = int(input("Enter the story ID to leave a comment: "))
-                comment = input("Enter your comment: ")
-                leave_comment(user[1], story_id, comment)
+            profession = input("Enter a profession: ")
+            content = input("Enter your story: ")
+            write_to_database(profession, content)
+            view_story = input("View shared stories? y/n")
+            view_story.lower()
+
+            if view_story == 'y':
+                read_profession = input("Enter profession to read story: ")
+                result = read_from_database(read_profession)
+                print(result)
+            elif view_story == 'n':
+                break
             else:
-                print("Please login first.")
+                print("Invalid choice. Answer y or n")
+                        
+                
         
         elif choice == 5:
-            break
+            print("Thank you for using our application. Goodbye.")
+            break;
+
 
         else:
             print("Invalid choice. Try again.")
