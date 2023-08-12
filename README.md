@@ -6,7 +6,7 @@
 
 ## Project Overview
 
-EmpowerHer Tales is an inspiring initiative that aims to empower African women by providing a secure platform for sharing their diverse experiences and stories. This application fosters a sense of community among women, encourages dialogue, and supports positive change and empowerment. Users can choose to read stories shared by others, contribute their narratives, participate in community forums, engage in story challenges, access valuable resources, and stay updated on upcoming events and webinars focused on women empowerment.
+EmpowerHer Tales is an inspiring initiative that aims to empower African women by providing a secure platform for sharing their diverse experiences and inspiring stories. This application fosters a sense of community among women, encourages dialogue, and supports positive change and empowerment. Users can choose to read stories shared by others, contribute their narratives, participate in community forums, engage in story challenges, access valuable resources, and stay updated on upcoming events and webinars focused on women empowerment.
 
 ## Features
 
