@@ -113,6 +113,7 @@ def populate_stories():
         {"title": "The Skilled Doctor", "story": "Once upon a time, there was a skilled doctor...", "profession": "doctor"},
         {"title": "The Talented Engineer", "story": "In the land of engineers, there lived a talented...", "profession": "engineer"},
         {"title": "Art", "story": "In the of beautifull art, there lived a talented...", "profession": "art"},
+        {"title": "My art my pride": "In a quaint Village, lived a young girl named Maya...", "profession": "art"},
 
     ]
 
