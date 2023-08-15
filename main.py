@@ -7,7 +7,7 @@ def display_themes():
         1: "Doctor Stories",
         2: "Engineer Stories",
         3: "Art",
-
+        4: "fisher"
     }
     for theme_id, theme_name in themes.items():
         print(f"{theme_id}. {theme_name}")
@@ -17,7 +17,8 @@ def read_stories_by_theme(theme_id):
     themes = {
         1: "doctor",
         2: "engineer",
-        3: "art"
+        3: "art",
+        4: "fisher"
     }
     theme = themes.get(theme_id)
     if theme:
