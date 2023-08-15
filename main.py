@@ -11,7 +11,7 @@ def display_themes():
     }
     for theme_id, theme_name in themes.items():
         print(f"{theme_id}. {theme_name}")
-
+ 
 
 def read_stories_by_theme(theme_id):
     themes = {
@@ -63,13 +63,27 @@ def leave_comment(username, story_id, comment):
     conn.commit()
     conn.close()
 
+def save_story(title, story, profession):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="mamanrose19@ALU",
+        database="test"
+    )
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO stories(title, story, profession) VALUES (%s, %s, %s)",
+        (title, story, profession)
+    )
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
 
     while True:
-        print("1. Register\n2. Login\n3. Read a story\n4. leave comment\n5. Exit")
+        print("1. Register\n2. Login\n3. share story\n4. Read a story\n5. leave comment\n6. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -89,6 +103,11 @@ if __name__ == "__main__":
                 print("Invalid username or password.")
 
         elif choice == 3:
+            title = input("Enter the story's title: ")
+            story = input("Enter the story: ")
+            profession = input("Enter your profession: ")
+            save_story(title,story, profession)
+        elif choice == 4:
             if "user" in locals() and user:
                 print("Select a theme:")
                 display_themes()
@@ -98,7 +117,7 @@ if __name__ == "__main__":
             else:
                 print("Please login first.")
         
-        elif choice == 4:
+        elif choice == 5:
             if "user" in locals() and user:
                 story_id = int(input("Enter the story ID to leave a comment: "))
                 comment = input("Enter your comment: ")
@@ -106,7 +125,7 @@ if __name__ == "__main__":
             else:
                 print("Please login first.")
         
-        elif choice == 5:
+        elif choice == 6:
             break
 
         else:

@@ -4,7 +4,7 @@ def create_database_and_table():
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="password"
+        password="mamanrose19@ALU"
     )
     cursor = conn.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS empowerhertales")
@@ -13,7 +13,7 @@ def create_database_and_table():
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="password",
+        password="mamanrose19@ALU",
         database="empowerhertales"
     )
     cursor = conn.cursor()
@@ -57,7 +57,7 @@ def register_user(username, password, profession):
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="password",
+        password="mamanrose19@ALU",
         database="empowerhertales"
     )
     cursor = conn.cursor()
