@@ -1,13 +1,14 @@
-from database import create_database_and_table, register_user, login_user, get_profession_by_username, populate_stories
-
 import mysql.connector
+from database import create_database_and_table, register_user, login_user, get_profession_by_username, populate_stories
+from resourcelist import display_resources
+from community_forums import CommunityForums
+
 
 def display_themes():
     themes = {
         1: "Doctor Stories",
         2: "Engineer Stories",
         3: "Art",
-
     }
     for theme_id, theme_name in themes.items():
         print(f"{theme_id}. {theme_name}")
@@ -67,8 +68,10 @@ if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
 
+    forums = CommunityForums() 
+    
     while True:
-        print("1. Register\n2. Login\n3. Read a story\n4. leave comment\n5. Exit")
+        print("1. Register\n2. Login\n3. Read a story\n4. leave comment\n5. resources\n6. community_forums\n7. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -93,19 +96,26 @@ if __name__ == "__main__":
                 display_themes()
                 theme_id = int(input("Enter theme ID: "))
                 read_stories_by_theme(theme_id)
-                    # story_choice = int(input("Enter the story number to read: "))
             else:
                 print("Please login first.")
-        
+
         elif choice == 4:
             if "user" in locals() and user:
-                story_id = int(input("Enter the story ID to leave a comment: "))
+                story_id = int(
+                    input("Enter the story ID to leave a comment: "))
                 comment = input("Enter your comment: ")
                 leave_comment(user[1], story_id, comment)
             else:
                 print("Please login first.")
-        
+
         elif choice == 5:
+            display_resources()
+
+        elif choice == 6:
+            
+            CommunityForums.display_discussions(self)
+        
+        elif choice == 7:
             break
 
         else:

@@ -41,12 +41,15 @@ class CommunityForums:
 if __name__ == "__main__":
     forums = CommunityForums()
 
-    forums.add_discussion("First Post", "Hello, everyone! This is my first post.", "Eunice")
+    forums.add_discussion(
+        "First Post", "Hello, everyone! This is my first post.", "Eunice")
     forums.add_comment(0, "Welcome! Looking forward to more posts.", "Bernice")
     forums.add_comment(0, "Great to have you here!", "Bob")
 
-    forums.add_discussion("Thoughts on Python", "What do you think about Python programming?", "Sine")
-    forums.add_comment(1, "I love Python! It's so versatile and easy to learn.", "Inocente")
+    forums.add_discussion("Thoughts on Python",
+                          "What do you think about Python programming?", "Sine")
+    forums.add_comment(
+        1, "I love Python! It's so versatile and easy to learn.", "Inocente")
     forums.add_comment(1, "Python is my favorite language too!", "Linda")
 
     forums.display_discussions()
