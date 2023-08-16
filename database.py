@@ -7,14 +7,14 @@ def create_database_and_table():
         password="password"
     )
     cursor = conn.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS test")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS empowerhertales")
     cursor.close()
 
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -47,7 +47,7 @@ def register_user(username, password, profession):
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -63,7 +63,7 @@ def login_user(username, password):
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -80,7 +80,7 @@ def get_profession_by_username(username):
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -94,7 +94,7 @@ def populate_stories():
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
 
@@ -114,3 +114,4 @@ def populate_stories():
     
 if __name__ == "__main__":
     populate_stories()
+
