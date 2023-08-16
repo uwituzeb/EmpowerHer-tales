@@ -1,5 +1,8 @@
 from database import create_database_and_table, register_user, login_user, get_profession_by_username, populate_stories
+from resourcelist import display_resources
+from community_forums import CommunityForums
 
+b=CommunityForums()
 import mysql.connector
 
 def display_themes():
@@ -67,7 +70,7 @@ def save_story(title, story, profession):
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="mamanrose19@ALU",
+        password="password",
         database="test"
     )
     cursor = conn.cursor()
@@ -83,7 +86,7 @@ if __name__ == "__main__":
     populate_stories()
 
     while True:
-        print("1. Register\n2. Login\n3. share story\n4. Read a story\n5. leave comment\n6. Exit")
+        print("1. Register\n2. Login\n3. share story\n4. Read a story\n5. Leave comment\n6. Resources \n7. Community building \n8. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -107,13 +110,13 @@ if __name__ == "__main__":
             story = input("Enter the story: ")
             profession = input("Enter your profession: ")
             save_story(title,story, profession)
+            
         elif choice == 4:
             if "user" in locals() and user:
                 print("Select a theme:")
                 display_themes()
                 theme_id = int(input("Enter theme ID: "))
                 read_stories_by_theme(theme_id)
-                    # story_choice = int(input("Enter the story number to read: "))
             else:
                 print("Please login first.")
         
@@ -124,9 +127,18 @@ if __name__ == "__main__":
                 leave_comment(user[1], story_id, comment)
             else:
                 print("Please login first.")
-        
+                
         elif choice == 6:
+            display_resources()
+
+        elif choice == 7:
+           b=CommunityForums()
+           b.share_inspiring_()
+           
+        
+        elif choice == 8:
             break
+        
 
         else:
             print("Invalid choice. Try again.")

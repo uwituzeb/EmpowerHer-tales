@@ -1,3 +1,6 @@
+# Example usage
+
+
 class CommunityForums:
     def __init__(self):
         self.discussions = []
@@ -35,9 +38,24 @@ class CommunityForums:
 
     def share_inspiring_quote(self, quote, author):
         print("An inspiring quote from {}:\n{}".format(author, quote))
+    def share_inspiring_(self):
+        self.add_discussion("First Post", "Hello, everyone! This is my first post.", "Eunice")
+        self.add_comment(0, "Welcome! Looking forward to more posts.", "Bernice")
+        self.add_comment(0, "Great to have you here!", "Joh")
+
+        self.add_discussion("Thoughts on Python", "What do you think about Python programming?", "Sine")
+        self.add_comment(1, "I love Python! It's so versatile and easy to learn.", "Inocente")
+        self.add_comment(1, "Python is my favorite language too!", "Linda")
+
+        self.display_discussions()
+
+        inspiring_quote = "The only limit to our realization of tomorrow will be our doubts of today. " \
+                      "Let us move forward with strong and active faith. - Franklin D. Roosevelt"
+        self.share_inspiring_quote(inspiring_quote, "Franklin D. Roosevelt")
+        
 
 
-# Example usage
+
 if __name__ == "__main__":
     forums = CommunityForums()
 

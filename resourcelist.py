@@ -39,4 +39,4 @@ def display_resources():
         print('---------------------------')
 
 
-display_resources()
+
