@@ -24,6 +24,11 @@ def display_resources():
                 "title" : "African Female Architects",
                 "description" : "AFA is a Growing Hub & magazine start-up that covers African Women in the architecture & design field and showcases their achievements.",
                 "link" : "https://www.africanfemalearchitects.work/"
+            },
+            {
+                "title" : "Women In Aviation",
+                "description" : "GFPA Foundation's vision is to make aviation and aerospace a accessible career choice for girls and women in Africa.",
+                "link" : "https://www.gfpafoundation.org/component/tags/tag/women-in-aviation"
             }
         ]
 
