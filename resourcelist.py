@@ -19,6 +19,11 @@ def display_resources():
                 "title" : "Women in Tech Africa",
                 "description" : "Supporting Women in Tech Across Africa(WITA) to Positively to Impact their Communities Positively.",
                 "link" : "http://www.womenintechafrica.com/"
+            },
+            {
+                "title" : "African Female Architects",
+                "description" : "AFA is a Growing Hub & magazine start-up that covers African Women in the architecture & design field and showcases their achievements.",
+                "link" : "https://www.africanfemalearchitects.work/"
             }
         ]
 
