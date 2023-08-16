@@ -2,7 +2,6 @@
 
 
 class CommunityForums:
-
     def __init__(self):
         self.discussions = []
 
