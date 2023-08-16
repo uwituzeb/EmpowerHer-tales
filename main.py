@@ -74,71 +74,100 @@ def save_story(title, story, profession):
         database="test"
     )
     cursor = conn.cursor()
-    cursor.execute(
+    cursor.execute
         "INSERT INTO stories(title, story, profession) VALUES (%s, %s, %s)",
         (title, story, profession)
     )
     conn.commit()
     conn.close()
 
-if __name__ == "__main__":
+    if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
+    user = None  # Initialize user as None
 
+    banner_text = """
+*********************************************
+*       Welcome To Empower Her Tails        *
+*********************************************
+"""
+
+    print(banner_text)
     while True:
-        print("1. Register\n2. Login\n3. share story\n4. Read a story\n5. Leave comment\n6. Resources \n7. Community building \n8. Exit")
-        choice = int(input("Enter your choice: "))
 
-        if choice == 1:
-            username = input("Enter username: ")
-            password = input("Enter password: ")
-            profession = input("Enter your profession: ")
-            register_user(username, password, profession)
-            print("User registered successfully!")
 
-        elif choice == 2:
-            username = input("Enter username: ")
-            password = input("Enter password: ")
-            user = login_user(username, password)
-            if user:
-                print("Login successful!")
+        if not user:  # If user is not logged in
+
+            print("1. Register\n2. Login\n3. Exit")
+
+            choice = int(input("Enter your choice: "))
+
+            if choice == 1:
+                print("\n--- Register ---")
+                username = input("Enter username: ")
+                password = input("Enter password: ")
+                profession = input("Enter your profession: ")
+                register_user(username, password, profession)
+                print("User registered successfully!")
+
+            elif choice == 2:
+                print("\n--- Login ---")
+                username = input("Enter username: ")
+                password = input("Enter password: ")
+                user = login_user(username, password)
+                if user:
+                    print("Login successful!")
+                else:
+                    print("Invalid username or password.")
+
+            elif choice == 3:
+                break
+
             else:
-                print("Invalid username or password.")
+                print("Invalid choice. Try again.")
 
-        elif choice == 3:
-            title = input("Enter the story's title: ")
-            story = input("Enter the story: ")
-            profession = input("Enter your profession: ")
-            save_story(title,story, profession)
-            
-        elif choice == 4:
-            if "user" in locals() and user:
+        else:
+            print("1. Share story\n2. Read a story\n3. Leave comment\n4. Resources\n5. Community building\n6. Logout\n7. Exit")
+            choice = int(input("Enter your choice: "))
+
+            if choice == 1:
+                print("\n--- Share Story ---")
+                title = input("Enter the story's title: ")
+                story = input("Enter the story: ")
+                save_story(title, story, user[2])
+                print("Story shared successfully!")
+
+            elif choice == 2:
+                print("\n--- Read a Story ---")
                 print("Select a theme:")
                 display_themes()
                 theme_id = int(input("Enter theme ID: "))
                 read_stories_by_theme(theme_id)
-            else:
-                print("Please login first.")
-        
-        elif choice == 5:
-            if "user" in locals() and user:
+
+            elif choice == 3:
+                print("\n--- Leave Comment ---")
                 story_id = int(input("Enter the story ID to leave a comment: "))
                 comment = input("Enter your comment: ")
                 leave_comment(user[1], story_id, comment)
+                print("Comment left successfully!")
+
+            elif choice == 4:
+                print("\n--- Resources ---")
+                display_resources()
+
+            elif choice == 5:
+                print("\n--- Community Building ---")
+                b = CommunityForums()
+                b.share_inspiring_()
+
+            elif choice == 6:
+                print("\n--- Logout ---")
+                user = None
+                print("Logged out successfully!")
+
+            elif choice == 7:
+                break
+
             else:
-                print("Please login first.")
-                
-        elif choice == 6:
-            display_resources()
+                print("Invalid choice. Try again.")
 
-        elif choice == 7:
-           b=CommunityForums()
-           b.share_inspiring_()
-           
-        
-        elif choice == 8:
-            break
-        
-
-        else:
-            print("Invalid choice. Try again.")
