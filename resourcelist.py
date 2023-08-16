@@ -15,6 +15,11 @@ def display_resources():
                 "description": "A compendium by the AU that aims to recognise and celebrate African women and girls making a difference through their impactful leadership.",
                 "link": "https://au.int/en/documents/20230801/women-impact-inspiring-stories-african-women-leaders"
             },
+            {
+                "title" : "Women in Tech Africa",
+                "description" : "Supporting Women in Tech Across Africa(WITA) to Positively to Impact their Communities Positively.",
+                "link" : "http://www.womenintechafrica.com/"
+            }
         ]
 
     for resource in resources:
