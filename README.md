@@ -10,7 +10,7 @@ EmpowerHer Tales is an inspiring initiative that aims to empower African women b
 
 ## Features
 
-- Read stories under different themes: Climate change, SDGs, change-making, entrepreneurship, etc.
+- Read stories under different themes: Climate change, SDGs, change-making, entrepreneurship, etc...
 - Share personal stories with the community.
 - Engage in discussions through dedicated community forums.
 - Participate in periodic story challenges.
