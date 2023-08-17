@@ -84,7 +84,7 @@ def save_story(title, story, profession):
     if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
-    user = None  # Initialize user as None
+    user = None  # 
 
     banner_text = """
 *********************************************
@@ -96,7 +96,7 @@ def save_story(title, story, profession):
     while True:
 
 
-        if not user:  # If user is not logged in
+        if not user:  
 
             print("1. Register\n2. Login\n3. Exit")
 
