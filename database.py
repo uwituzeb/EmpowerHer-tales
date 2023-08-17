@@ -37,6 +37,16 @@ def create_database_and_table():
         )
         """
     )
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS comments (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            comment VARCHAR(255) NOT NULL,
+            story_id int NOT NULL
+        )
+        """
+    )
     conn.commit()
     cursor.close()
     conn.close()
@@ -114,4 +124,3 @@ def populate_stories():
     
 if __name__ == "__main__":
     populate_stories()
-
