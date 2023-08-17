@@ -1,9 +1,10 @@
+import mysql.connector
 from database import create_database_and_table, register_user, login_user, get_profession_by_username, populate_stories
 from resourcelist import display_resources
 from community_forums import CommunityForums
 
-b=CommunityForums()
-import mysql.connector
+b = CommunityForums()
+
 
 def display_themes():
     themes = {
@@ -14,7 +15,7 @@ def display_themes():
     }
     for theme_id, theme_name in themes.items():
         print(f"{theme_id}. {theme_name}")
- 
+
 
 def read_stories_by_theme(theme_id):
     themes = {
@@ -39,7 +40,7 @@ def get_story_by_profession(profession):
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -51,12 +52,12 @@ def get_story_by_profession(profession):
     return stories
 
 
-def leave_comment(username, story_id, comment):
+def leave_comment( story_id,username, comment):
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
     cursor.execute(
@@ -66,25 +67,27 @@ def leave_comment(username, story_id, comment):
     conn.commit()
     conn.close()
 
+
 def save_story(title, story, profession):
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
         password="password",
-        database="test"
+        database="empowerhertales"
     )
     cursor = conn.cursor()
-    cursor.execute
+    cursor.execute(
         "INSERT INTO stories(title, story, profession) VALUES (%s, %s, %s)",
         (title, story, profession)
     )
     conn.commit()
     conn.close()
 
-    if __name__ == "__main__":
+
+if __name__ == "__main__":
     create_database_and_table()
     populate_stories()
-    user = None  # 
+    user = None  # Initialize user as None
 
     banner_text = """
 *********************************************
@@ -96,7 +99,7 @@ def save_story(title, story, profession):
     while True:
 
 
-        if not user:  
+        if not user:  # If user is not logged in
 
             print("1. Register\n2. Login\n3. Exit")
 
@@ -118,7 +121,6 @@ def save_story(title, story, profession):
                 if user:
                     print("Login successful!")
                     print("________________________________________________________________")
-
                 else:
                     print("Invalid username or password.")
 
@@ -128,7 +130,8 @@ def save_story(title, story, profession):
             else:
                 print("Invalid choice. Try again.")
 
-        else:
+        else: 
+            print("\nWelcome to the main menu of Empower her\n")
             print("1. Share story\n2. Read a story\n3. Leave comment\n4. Resources\n5. Community building\n6. Logout\n7. Exit")
             choice = int(input("Enter your choice: "))
 
@@ -136,7 +139,7 @@ def save_story(title, story, profession):
                 print("\n--- Share Story ---")
                 title = input("Enter the story's title: ")
                 story = input("Enter the story: ")
-                save_story(title, story, user[2])
+                save_story(title, story, user[2])  
                 print("Story shared successfully!")
 
             elif choice == 2:
@@ -154,7 +157,6 @@ def save_story(title, story, profession):
                 print("Comment left successfully!")
                 print("________________________________________________________________")
 
-
             elif choice == 4:
                 print("\n--- Resources ---")
                 display_resources()
@@ -166,7 +168,7 @@ def save_story(title, story, profession):
 
             elif choice == 6:
                 print("\n--- Logout ---")
-                user = None
+                user = None  
                 print("Logged out successfully!")
 
             elif choice == 7:
@@ -174,4 +176,3 @@ def save_story(title, story, profession):
 
             else:
                 print("Invalid choice. Try again.")
-
