@@ -152,6 +152,8 @@ def save_story(title, story, profession):
                 comment = input("Enter your comment: ")
                 leave_comment(user[1], story_id, comment)
                 print("Comment left successfully!")
+                print("________________________________________________________________")
+
 
             elif choice == 4:
                 print("\n--- Resources ---")
