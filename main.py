@@ -117,6 +117,8 @@ def save_story(title, story, profession):
                 user = login_user(username, password)
                 if user:
                     print("Login successful!")
+                    print("________________________________________________________________")
+
                 else:
                     print("Invalid username or password.")
 
