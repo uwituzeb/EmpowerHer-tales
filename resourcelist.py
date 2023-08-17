@@ -29,7 +29,12 @@ def display_resources():
                 "title" : "Women In Aviation",
                 "description" : "GFPA Foundation's vision is to make aviation and aerospace a accessible career choice for girls and women in Africa.",
                 "link" : "https://www.gfpafoundation.org/component/tags/tag/women-in-aviation"
-            }
+            };
+        {
+            "title" : "Women’s wellness";
+            "decription" : "How to be your best self in your 30s."
+            "link" : "https://www.bswhealth.com/blog/women-health-thirties"
+        } 
         ]
 
     for resource in resources:
