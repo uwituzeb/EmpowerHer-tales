@@ -139,7 +139,8 @@ if __name__ == "__main__":
                 print("\n--- Share Story ---")
                 title = input("Enter the story's title: ")
                 story = input("Enter the story: ")
-                save_story(title, story, user[2])  
+                profession= input("Enter your profession :")
+                save_story(title, story, profession)  
                 print("Story shared successfully!")
 
             elif choice == 2:
